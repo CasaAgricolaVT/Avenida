@@ -128,6 +128,30 @@
             animation: fadeInUp 1.2s ease-out 0.3s backwards;
         }
 
+        .booking-btn {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.85rem 2.5rem;
+            background: #003580;
+            color: #fff;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-decoration: none;
+            border-radius: 4px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            animation: fadeInUp 1.2s ease-out 0.6s backwards;
+            border: 2px solid #0071c2;
+        }
+
+        .booking-btn:hover {
+            background: #0071c2;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0,53,128,0.5);
+        }
+
         .scroll-indicator {
             position: absolute;
             bottom: 2rem;
@@ -677,6 +701,7 @@
         Avenida da Piedade, 58 - B, Elvas
                 </a>
             </p>
+            <a href="https://www.booking.com/hotel/pt/avenida-elvas.pt-pt.html" target="_blank" class="booking-btn" data-i18n="booking-btn">Reserva Já</a>
         </div>
         <div class="scroll-indicator"></div>
     </div>
@@ -933,6 +958,7 @@
             'sec-verao-title':'☀️ Se o Tempo Permitir...','sec-verao-intro':'Nos dias quentes do verão, aproveite para refrescar-se nas piscinas e praias fluviais da região.',
             'sec-verao-em-elvas':'Em Elvas','sec-verao-na-regiao':'Na Região',
             'footer-desc':'Descubra Elvas • Património Mundial da UNESCO • Alentejo • Portugal',
+            'booking-btn': 'Reserva Já',
         },
         es: {
             'nav-pastelarias':'🥐 Pastelerías','nav-restaurantes':'🍴 Restaurantes','nav-arredores':'🏘️ Alrededores',
@@ -944,6 +970,7 @@
             'sec-verao-title':'☀️ Si el Tiempo lo Permite...','sec-verao-intro':'En los días calurosos del verano, aproveche para refrescarse en las piscinas y playas fluviales de la región.',
             'sec-verao-em-elvas':'En Elvas','sec-verao-na-regiao':'En la Región',
             'footer-desc':'Descubra Elvas • Patrimonio Mundial de la UNESCO • Alentejo • Portugal',
+            'booking-btn': 'Reservar Ahora',
         },
         en: {
             'nav-pastelarias':'🥐 Bakeries','nav-restaurantes':'🍴 Restaurants','nav-arredores':'🏘️ Surroundings',
@@ -955,6 +982,7 @@
             'sec-verao-title':'☀️ If the Weather Allows...','sec-verao-intro':'On hot summer days, cool off at the swimming pools and river beaches in the region.',
             'sec-verao-em-elvas':'In Elvas','sec-verao-na-regiao':'In the Region',
             'footer-desc':'Discover Elvas • UNESCO World Heritage • Alentejo • Portugal',
+            'booking-btn': 'Book Now',
         },
     };
 
