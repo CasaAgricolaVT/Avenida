@@ -577,6 +577,53 @@
             .top-nav a { font-size: 0.9rem; padding: 0.85rem 0.6rem; }
         }
 
+        /* ── LANGUAGE SELECTOR ── */
+        .lang-selector {
+            position: fixed;
+            top: 48px;
+            right: 1rem;
+            z-index: 1100;
+            display: flex;
+            gap: 2px;
+            background: rgba(139, 115, 85, 0.95);
+            border: 1px solid rgba(212, 175, 55, 0.35);
+            border-top: none;
+            border-radius: 0 0 20px 20px;
+            padding: 4px 5px 5px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: rgba(255,251,245,0.8);
+            font-family: 'Crimson Text', serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            padding: 0.22rem 0.55rem;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            line-height: 1;
+        }
+
+        .lang-btn:hover {
+            color: #fff;
+            background: rgba(255,255,255,0.12);
+        }
+
+        .lang-btn.active {
+            background: var(--gold);
+            color: var(--deep-green);
+        }
+
+        @media (max-width: 768px) {
+            .lang-selector { top: 42px; right: 0.75rem; }
+            .lang-btn { font-size: 0.75rem; padding: 0.2rem 0.5rem; }
+        }
+
         .stagger-animation {
             opacity: 0;
             animation: fadeInStagger 0.8s ease-out forwards;
@@ -597,17 +644,23 @@
     </style>
 </head>
 <body>
-    <!-- STICKY NAV -->
+    <!-- LANGUAGE SELECTOR (floating, fixed) -->
+    <div class="lang-selector">
+        <button class="lang-btn active" onclick="setLang('pt')">PT</button>
+        <button class="lang-btn" onclick="setLang('es')">ES</button>
+        <button class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
+
     <nav class="top-nav" id="topNav">
         <div class="top-nav-inner">
             <span class="top-nav-brand">AVENIDA</span>
-            <a href="#sec-pastelarias">🥐 Pastelarias</a>
-            <a href="#sec-restaurantes">🍴 Restaurantes</a>
-            <a href="#sec-arredores">🏘️ Arredores</a>
-            <a href="#sec-passeios">🗺️ Passeios</a>
-            <a href="#sec-estacionamento">🅿️ Estacionamento</a>
-            <a href="#sec-locais">🏰 Locais de Interesse</a>
-            <a href="#sec-verao">☀️ Verão</a>
+            <a href="#sec-pastelarias" data-i18n="nav-pastelarias">🥐 Pastelarias</a>
+            <a href="#sec-restaurantes" data-i18n="nav-restaurantes">🍴 Restaurantes</a>
+            <a href="#sec-arredores" data-i18n="nav-arredores">🏘️ Arredores</a>
+            <a href="#sec-passeios" data-i18n="nav-passeios">🗺️ Passeios</a>
+            <a href="#sec-estacionamento" data-i18n="nav-estacionamento">🅿️ Estacionamento</a>
+            <a href="#sec-locais" data-i18n="nav-locais">🏰 Locais de Interesse</a>
+            <a href="#sec-verao" data-i18n="nav-verao">☀️ Verão</a>
         </div>
     </nav>
 
@@ -617,7 +670,7 @@
             <h1>AVENIDA</h1>
             <p class="tagline">Just Like Home</p>
             <div class="divider"></div>
-            <p class="subtitle">Alojamento Local em Elvas</p>
+            <p class="subtitle" data-i18n="hero-subtitle">Alojamento Local em Elvas</p>
             <p class="address">
                 <a href="https://maps.app.goo.gl/qJT14pshDuG9WmQv8" target="_blank" 
        style="color: white;">
@@ -630,7 +683,7 @@
 
     <div class="intro">
         <div class="container">
-            <p class="intro-text">
+            <p class="intro-text" data-i18n="intro-text">
                 O <strong>Avenida</strong> é o seu lar em Elvas, a cidade-forte mais representativa da escola de fortificação abaluartada europeia. 
                 Estrategicamente localizado na Avenida da Piedade , oferecemos-lhe acesso privilegiado ao <strong>Património Mundial da UNESCO</strong>, 
                 ao maior aqueduto da Península Ibérica, e à autêntica gastronomia alentejana. 
@@ -640,405 +693,49 @@
     </div>
 
     <div class="container" id="sec-pastelarias">
-        <h2 class="section-title">Pastelarias & Doçaria</h2>
-        <div class="grid">
-            <div class="card stagger-animation">
-                <div class="card-header">
-                    <span class="icon">🥐</span>
-                    <h3>A Paloma</h3>
-                </div>
-                <div class="card-body">
-                    <div class="establishment">
-                        <p>Ideal para tomar o pequeno-almoço, a um quarteirão da Avenida.</p>
-                        <div class="highlight">Pastelaria de fabrico próprio, excelente pequeno-almoço e o autêntico Pastel de Nata (Belém)</div>
-                        <a href="https://maps.app.goo.gl/qsu3bFemHW9hZP6h6" target="_blank">Ver localização</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card stagger-animation">
-                <div class="card-header">
-                    <span class="icon">☕</span>
-                    <h3>Coffee Time Aqueduto</h3>
-                </div>
-                <div class="card-body">
-                    <div class="establishment">
-                        <p>Ideal para o pequeno-almoço ou refeição ligeira, com vista para o Aqueduto da Amoreira.</p>
-                        <div class="highlight">Pastelaria portuguesa com foco nos croissants e crepes</div>
-                        <a href="https://maps.app.goo.gl/uN8UFVRr51kXqbVXA" target="_blank">Ver localização</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card stagger-animation">
-                <div class="card-header">
-                    <span class="icon">🍰</span>
-                    <h3>Pastelaria Canhão</h3>
-                </div>
-                <div class="card-body">
-                    <div class="establishment">
-                        <p>Especialidade única e imperdível!</p>
-                        <div class="highlight">Único Sericaia confeccionado em forno de lenha. Take-away exclusivo - recomendável ligar antecipadamente</div>
-                        <a href="https://maps.app.goo.gl/PhMYZ9bLaDFK55ZD8" target="_blank">Ver localização</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <h2 class="section-title" data-i18n="sec-pastelarias-title">Pastelarias & Doçaria</h2>
+        <div class="grid" id="grid-pastelarias"></div>
     </div>
 
     <div class="container" id="sec-restaurantes">
-        <h2 class="section-title">Restaurantes</h2>
-        <div class="grid">
-            <div class="card stagger-animation">
-                <div class="card-header">
-                    <span class="icon">🍷</span>
-                    <h3>Adega Regional</h3>
-                </div>
-                <div class="card-body">
-                    <div class="establishment">
-                        <p>Restaurante que serve cozinha tradicional alentejana sob tetos abobadados do século XVII.</p>
-                        <div class="highlight">Comida tradicional em restaurante de qualidade</div>
-                        <a href="https://maps.app.goo.gl/AAxRjzvj77g1YKQY9" target="_blank">Ver localização</a>
-                    </div>
-                </div>
-            </div>
+        <h2 class="section-title" data-i18n="sec-restaurantes-title">Restaurantes</h2>
+        <div class="grid" id="grid-restaurantes"></div>
 
-            <div class="card stagger-animation">
-                <div class="card-header">
-                    <span class="icon">🍴</span>
-                    <h3>Recanto de São Paulo</h3>
-                </div>
-                <div class="card-body">
-                    <div class="establishment">
-                        <p>Localizado junto ao Mercado Municipal Casa das Barcas, com base na rica culinária regional.</p>
-                        <div class="highlight">Comida tradicional em restaurante de qualidade</div>
-                        <a href="https://maps.app.goo.gl/p9DtnX2PUveSndgH6" target="_blank">Ver localização</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card stagger-animation">
-                <div class="card-header">
-                    <span class="icon">🌅</span>
-                    <h3>Alcalá Restaurant & Sky Lounge</h3>
-                </div>
-                <div class="card-body">
-                    <div class="establishment">
-                        <p>Terraço moderno com vistas privilegiadas para o Aqueduto da Amoreira.</p>
-                        <div class="highlight">Comida moderna em restaurante de qualidade</div>
-                        <a href="https://maps.app.goo.gl/cjtpBZ38KE9sYZCs8" target="_blank">Ver localização</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card stagger-animation">
-                <div class="card-header">
-                    <span class="icon">🍕</span>
-                    <h3>Nonna Bia</h3>
-                </div>
-                <div class="card-body">
-                    <div class="establishment">
-                        <p>Pratos especiais mensais inspirados nos ingredientes da época e nas famosas pizzarias napolitanas.</p>
-                        <div class="highlight">Comida italiana em restaurante de qualidade</div>
-                        <a href="https://maps.app.goo.gl/9Y2PNfJSx2SJSsok7" target="_blank">Ver localização</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card stagger-animation">
-                <div class="card-header">
-                    <span class="icon">✨</span>
-                    <h3>Acontece</h3>
-                </div>
-                <div class="card-body">
-                    <div class="establishment">
-                        <p>Restaurante de autor com experiências únicas, esplanada atraente e decoração contemporânea.</p>
-                        <div class="highlight">Comida sofisticada em restaurante de design</div>
-                        <a href="https://maps.app.goo.gl/ZirRh4D5CvKBKJzS8" target="_blank">Ver localização</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card stagger-animation">
-                <div class="card-header">
-                    <span class="icon">🦞</span>
-                    <h3>El Cristo</h3>
-                </div>
-                <div class="card-body">
-                    <div class="establishment">
-                        <div class="highlight">Considerada uma das melhores marisqueiras de Portugal</div>
-                        <a href="https://maps.app.goo.gl/BG4AJFB3dG87wkAc8" target="_blank">Ver localização</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card stagger-animation">
-                <div class="card-header">
-                    <span class="icon">🛣️</span>
-                    <h3>Vinha da Amada</h3>
-                </div>
-                <div class="card-body">
-                    <div class="establishment">
-                        <div class="highlight">Comida Tradicional em Restaurante de Estrada</div>
-                        <a href="https://maps.app.goo.gl/oCrcCCVyam6X6ZXr9" target="_blank">Ver localização</a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <h2 class="section-title" id="sec-arredores" style="margin-top: 5rem;">Arredores de Elvas</h2>
-        <div class="grid">
-            <div class="card stagger-animation">
-                <div class="card-header">
-                    <span class="icon">🏘️</span>
-                    <h3>Pata Larga - Juromenha</h3>
-                </div>
-                <div class="card-body">
-                    <div class="establishment">
-                        <div class="highlight">Comida caseira com atendimento intimista em restaurante de aldeia</div>
-                        <a href="https://maps.app.goo.gl/haaz7ZyQcu31Ew5TA" target="_blank">Ver localização</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card stagger-animation">
-                <div class="card-header">
-                    <span class="icon">🦌</span>
-                    <h3>Pompílio - São Vicente</h3>
-                </div>
-                <div class="card-body">
-                    <div class="establishment">
-                        <div class="highlight">Comida tradicional e caça em restaurante de qualidade</div>
-                        <a href="https://maps.app.goo.gl/KyPXyzrC2uzFQxiS6" target="_blank">Ver localização</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card stagger-animation">
-                <div class="card-header">
-                    <span class="icon">🍳</span>
-                    <h3>O Canto - Vila Boim</h3>
-                </div>
-                <div class="card-body">
-                    <div class="establishment">
-                        <div class="highlight">Comida Tradicional em Restaurante Tradicional</div>
-                        <a href="https://maps.app.goo.gl/ootVSLChSgTpC9TA7" target="_blank">Ver localização</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card stagger-animation">
-                <div class="card-header">
-                    <span class="icon">🍲</span>
-                    <h3>Taberna do Adro - Vila Fernando</h3>
-                </div>
-                <div class="card-body">
-                    <div class="establishment">
-                        <div class="highlight">Comida Tradicional em Restaurante (Casa de Pasto) Típico</div>
-                        <a href="https://maps.app.goo.gl/rpT2kUdJfz41usAx5" target="_blank">Ver localização</a>
-                    </div>
-                </div>  
-            </div>
-            </div>
-        </div>
+        <h2 class="section-title" id="sec-arredores" style="margin-top: 5rem;" data-i18n="sec-arredores-title">Arredores de Elvas</h2>
+        <div class="grid" id="grid-arredores"></div>
     </div>
 
     <div class="excursions" id="sec-passeios">
         <div class="container">
-            <h2 class="section-title">Sugestões de Passeios</h2>
-            <div class="grid">
-                <div class="excursion-card stagger-animation">
-                    <h3>Juromenha</h3>
-                    <p class="distance">📍 17,5 km de Elvas</p>
-                    <p>Aldeia medieval com castelo e miradouro privilegiado para Espanha e o Rio Guadiana. Uma viagem ao passado medieval português.</p>
-                    <a href="https://goo.gl/maps/qBAVeHE31rmzyApH8" target="_blank" style="color: var(--gold);">Ver localização →</a>
-                </div>
-
-                 <div class="excursion-card stagger-animation">
-                    <h3>Monsaraz</h3>
-                    <p class="distance">📍 69,7 km de Elvas</p>
-                    <p>Aldeia medieval em perfeito estado de conservação, com miradouro espetacular para o espelho de água da Barragem do Alqueva.</p>
-                    <a href="https://goo.gl/maps/MWw1fFQdjqAVAfJA8" target="_blank" style="color: var(--gold);">Ver localização →</a>
-                </div>
-                
-                <div class="excursion-card stagger-animation">
-                    <h3>Marvão</h3>
-                    <p class="distance">📍 77,3 km de Elvas</p>
-                    <p>Vila abaluartada raiana com castelo, ruas estreitas e vistas absolutamente deslumbrantes sobre a serra e fronteira.</p>
-                    <a href="https://goo.gl/maps/dFBbMRT32pqMB9po7" target="_blank" style="color: var(--gold);">Ver localização →</a>
-                </div>
-
-            </div>
+            <h2 class="section-title" data-i18n="sec-passeios-title">Sugestões de Passeios</h2>
+            <div class="grid" id="grid-passeios"></div>
         </div>
     </div>
 
     <div class="parking" id="sec-estacionamento">
         <div class="container">
-            <h2 class="section-title">Estacionamento</h2>
-            <div class="parking-grid">
-                <div class="parking-item">
-                    <h4>Praça da República</h4>
-                    <p>Subterrâneo, 1ª hora gratuita</p>
-                    <span class="tag">Não aconselhável a veículos grandes</span>
-                    <br><a href="https://goo.gl/maps/5Tix55jzNZXSFbWu5" target="_blank">Ver no mapa →</a>
-                </div>
-
-                <div class="parking-item">
-                    <h4>Praça de Armas</h4>
-                    <span class="tag">Gratuito</span>
-                    <span class="tag" style="background: var(--terracotta);">Aconselhável a veículos grandes</span>
-                    <br><a href="https://goo.gl/maps/BLvCWRRELofCV47E7" target="_blank">Ver no mapa →</a>
-                </div>
-
-                <div class="parking-item">
-                    <h4>Estacionamento Shell</h4>
-                    <span class="tag">Gratuito</span>
-                    <br><a href="https://goo.gl/maps/LWLKETsK2MXDjQUn6" target="_blank">Ver no mapa →</a>
-                </div>
-
-                <div class="parking-item">
-                    <h4>Parque Casa das Barcas</h4>
-                    <p>Acesso através das muralhas a novo parque de grandes dimensões</p>
-                    <span class="tag">Gratuito</span>
-                    <span class="tag" style="background: var(--terracotta);">Aconselhável a veículos grandes</span>
-                    <br><a href="https://goo.gl/maps/1rEaiMaiYGzj9BFx9" target="_blank">Ver no mapa →</a>
-                </div>
-            </div>
+            <h2 class="section-title" data-i18n="sec-estacionamento-title">Estacionamento</h2>
+            <div class="parking-grid" id="grid-estacionamento"></div>
         </div>
     </div>
 
     <div class="container" id="sec-locais" style="padding: 5rem 2rem;">
-        <h2 class="section-title">Locais de Interesse</h2>
-        <div class="grid">
-            <div class="card stagger-animation">
-                <div class="card-header">
-                    <span class="icon">🏰</span>
-                    <h3>Castelo de Elvas</h3>
-                </div>
-                <div class="card-body">
-                    <div class="establishment">
-                        <p>Visita obrigatória ao Castelo e ruas circundantes. Aproveite para conhecer a Fábrica Museu da Ameixa de Elvas.</p>
-                        <a href="https://goo.gl/maps/pGN14FSZkz9rZH1M6" target="_blank">Ver Castelo</a>
-                        <br>
-                        <a href="https://goo.gl/maps/sZMxK5sf9gRnubAn6" target="_blank">Ver Fábrica Museu da Ameixa</a>
-                    </div>
-                </div>
-            </div>
+        <h2 class="section-title" data-i18n="sec-locais-title">Locais de Interesse</h2>
+        <div class="grid" id="grid-locais"></div>
+    </div>
 
-            <div class="card stagger-animation">
-                <div class="card-header">
-                    <span class="icon">🏛️</span>
-                    <h3>Muralhas e Fortificações</h3>
-                </div>
-                <div class="card-body">
-                    <div class="establishment">
-                        <p>Sistema de fortificações abaluartadas único. Recomendamos visita noturna de carro pela circular da cidade.</p>
-                        <div class="highlight">Durante o dia, percorra a zona de fossos desde o museu militar</div>
-                        <a href="https://goo.gl/maps/aSNqL5NW8Jd6zjMg8" target="_blank">Ver localização</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card stagger-animation">
-                <div class="card-header">
-                    <span class="icon">💧</span>
-                    <h3>Aqueduto da Amoreira</h3>
-                </div>
-                <div class="card-body">
-                    <div class="establishment">
-                        <div class="highlight">Maior aqueduto da Península Ibérica com 8,5 km de extensão, datado de 1498</div>
-                        <a href="https://goo.gl/maps/qxJF5qeC4oUBUTBA6" target="_blank">Ver localização</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card stagger-animation">
-                <div class="card-header">
-                    <span class="icon">⛪</span>
-                    <h3>Capela N. Sra. da Conceição</h3>
-                </div>
-                <div class="card-body">
-                    <div class="establishment">
-                        <p>Situada sob a cintura de muralhas com miradouro privilegiado sobre a cidade.</p>
-                        <a href="https://goo.gl/maps/9W9xEPLKhTRFGHSH8" target="_blank">Ver localização</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card stagger-animation">
-                <div class="card-header">
-                    <span class="icon">ℹ️</span>
-                    <h3>Posto de Turismo</h3>
-                </div>
-                <div class="card-body">
-                    <div class="establishment">
-                        <p>Situado na Praça da República, ideal para recolher informação sobre Elvas e a região.</p>
-                        <a href="https://goo.gl/maps/1mmQAauJNFjGkJMW7" target="_blank">Ver localização</a>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
     <div class="summer" id="sec-verao">
         <div class="container">
-            <h2 class="section-title">☀️ Se o Tempo Permitir...</h2>
-            <p class="summer-intro">Nos dias quentes do verão, aproveite para refrescar-se nas piscinas e praias fluviais da região.</p>
+            <h2 class="section-title" data-i18n="sec-verao-title">☀️ Se o Tempo Permitir...</h2>
+            <p class="summer-intro" data-i18n="sec-verao-intro">Nos dias quentes do verão, aproveite para refrescar-se nas piscinas e praias fluviais da região.</p>
 
-            <h3 class="summer-subtitle">Em Elvas</h3>
-            <div class="grid">
-                <div class="excursion-card stagger-animation">
-                    <h3>🏊 Piscinas Municipais de Elvas</h3>
-                    <p class="distance">Públicas – Descobertas e cobertas mediante a época do ano</p>
-                    <a href="https://goo.gl/maps/SQJMWpSPTKCFykL2A" target="_blank" style="color: var(--gold);">Ver localização →</a>
-                </div>
+            <h3 class="summer-subtitle" data-i18n="sec-verao-em-elvas">Em Elvas</h3>
+            <div class="grid" id="grid-verao-elvas"></div>
 
-                <div class="excursion-card stagger-animation">
-                    <h3>🏊 Piscina José Vicente Abreu</h3>
-                    <p class="distance">Clube Elvense de Natação – Descobertas mediante a época do ano</p>
-                    <a href="https://goo.gl/maps/xbz2eMpbwhA5wTP47" target="_blank" style="color: var(--gold);">Ver localização →</a>
-                </div>
-
-                <div class="excursion-card stagger-animation">
-                    <h3>🏊 Piscinas Elxadai</h3>
-                    <p class="distance">Unidade Hoteleira – Descobertas mediante a época do ano</p>
-                    <a href="https://goo.gl/maps/TCJM3XP3RshGmFy29" target="_blank" style="color: var(--gold);">Ver localização →</a>
-                </div>
-            </div>
-
-            <h3 class="summer-subtitle" style="margin-top: 3rem;">Na Região</h3>
-            <div class="grid">
-                <div class="excursion-card stagger-animation">
-                    <h3>🏖️ Praia Fluvial de Azenhas d'El Rei</h3>
-                    <p class="distance">📍 52,7 km de Avenida · Alandroal</p>
-                    <a href="https://goo.gl/maps/BNfq9G3JqFdMZZUZ6" target="_blank" style="color: var(--gold);">Ver localização →</a>
-                </div>
-
-                <div class="excursion-card stagger-animation">
-                    <h3>🌊 Piscinas Naturales de La Codosera</h3>
-                    <p class="distance">📍 55,3 km de Avenida · Espanha</p>
-                    <a href="https://goo.gl/maps/1ge4KtgAjAZPuCDWA" target="_blank" style="color: var(--gold);">Ver localização →</a>
-                </div>
-
-                <div class="excursion-card stagger-animation">
-                    <h3>🏖️ Praia Fluvial de Monsaraz</h3>
-                    <p class="distance">📍 71,2 km de Avenida</p>
-                    <a href="https://goo.gl/maps/uH5XVZ2C2QZ6MREs9" target="_blank" style="color: var(--gold);">Ver localização →</a>
-                </div>
-
-                <div class="excursion-card stagger-animation">
-                    <h3>🎢 Parque Aquático AquaBadajoz</h3>
-                    <p class="distance">📍 14,7 km de Avenida · Badajoz, Espanha</p>
-                    <a href="https://g.page/AQUABadajoz?share" target="_blank" style="color: var(--gold);">Ver localização →</a>
-                </div>
-
-                <div class="excursion-card stagger-animation">
-                    <h3>🏖️ Piscina Fluvial de Portagem</h3>
-                    <p class="distance">📍 72,4 km de Avenida</p>
-                    <a href="https://maps.app.goo.gl/ezN9qhPDGBj7b4yj8" target="_blank" style="color: var(--gold);">Ver localização →</a>
-                </div>
-            </div>
+            <h3 class="summer-subtitle" style="margin-top: 3rem;" data-i18n="sec-verao-na-regiao">Na Região</h3>
+            <div class="grid" id="grid-verao-regiao"></div>
         </div>
     </div>
 
@@ -1046,23 +743,318 @@
         <div class="container">
             <p><span class="gold-text">Avenida</span> • Just Like Home</p>
             <p style="margin-top: 0.5rem;">Avenida da Piedade 58 - B, Elvas</p>
-            <p style="margin-top: 1rem; font-size: 0.95rem;">Descubra Elvas • Património Mundial da UNESCO • Alentejo • Portugal</p>
+            <p style="margin-top: 1rem; font-size: 0.95rem;" data-i18n="footer-desc">Descubra Elvas • Património Mundial da UNESCO • Alentejo • Portugal</p>
         </div>
     </div>
     <script>
-        // Smooth scroll with offset for fixed nav
-        const nav = document.getElementById('topNav');
-        document.querySelectorAll('.top-nav a[href^="#"]').forEach(link => {
-            link.addEventListener('click', e => {
-                e.preventDefault();
-                const target = document.querySelector(link.getAttribute('href'));
-                if (target) {
-                    const offset = nav.offsetHeight + 16;
-                    const top = target.getBoundingClientRect().top + window.scrollY - offset;
-                    window.scrollTo({ top, behavior: 'smooth' });
-                }
-            });
+    // ══════════════════════════════════════════════
+    // CONTENT DATA — all translatable card content
+    // ══════════════════════════════════════════════
+    const cardData = {
+        pastelarias: {
+            pt: [
+                { icon:'🥐', name:'A Paloma', body:`<p>Ideal para tomar o pequeno-almoço, a um quarteirão da Avenida.</p><div class="highlight">Pastelaria de fabrico próprio, excelente pequeno-almoço e o autêntico Pastel de Nata (Belém)</div><a href="https://maps.app.goo.gl/qsu3bFemHW9hZP6h6" target="_blank">Ver localização</a>` },
+                { icon:'☕', name:'Coffee Time Aqueduto', body:`<p>Ideal para o pequeno-almoço ou refeição ligeira, com vista para o Aqueduto da Amoreira.</p><div class="highlight">Pastelaria portuguesa com foco nos croissants e crepes</div><a href="https://maps.app.goo.gl/uN8UFVRr51kXqbVXA" target="_blank">Ver localização</a>` },
+                { icon:'🍰', name:'Pastelaria Canhão', body:`<p>Especialidade única e imperdível!</p><div class="highlight">Único Sericaia confeccionado em forno de lenha. Take-away exclusivo - recomendável ligar antecipadamente</div><a href="https://maps.app.goo.gl/PhMYZ9bLaDFK55ZD8" target="_blank">Ver localização</a>` },
+            ],
+            es: [
+                { icon:'🥐', name:'A Paloma', body:`<p>Ideal para el desayuno, a una manzana del Avenida.</p><div class="highlight">Pastelería de fabricación propia, excelente desayuno y el auténtico Pastel de Nata (Belém)</div><a href="https://maps.app.goo.gl/qsu3bFemHW9hZP6h6" target="_blank">Ver ubicación</a>` },
+                { icon:'☕', name:'Coffee Time Aqueduto', body:`<p>Ideal para el desayuno o comida ligera, con vistas al Acueducto de Amoreira.</p><div class="highlight">Pastelería portuguesa centrada en cruasanes y crepes</div><a href="https://maps.app.goo.gl/uN8UFVRr51kXqbVXA" target="_blank">Ver ubicación</a>` },
+                { icon:'🍰', name:'Pastelaria Canhão', body:`<p>¡Especialidad única e imprescindible!</p><div class="highlight">Único Sericaia elaborado en horno de leña. Solo para llevar — se recomienda llamar con antelación</div><a href="https://maps.app.goo.gl/PhMYZ9bLaDFK55ZD8" target="_blank">Ver ubicación</a>` },
+            ],
+            en: [
+                { icon:'🥐', name:'A Paloma', body:`<p>Perfect for breakfast, just around the corner from Avenida.</p><div class="highlight">House-made pastries, excellent breakfast and the authentic Pastel de Nata (Belém)</div><a href="https://maps.app.goo.gl/qsu3bFemHW9hZP6h6" target="_blank">View location</a>` },
+                { icon:'☕', name:'Coffee Time Aqueduto', body:`<p>Perfect for breakfast or a light bite, with views of the Amoreira Aqueduct.</p><div class="highlight">Portuguese bakery specializing in croissants and crepes</div><a href="https://maps.app.goo.gl/uN8UFVRr51kXqbVXA" target="_blank">View location</a>` },
+                { icon:'🍰', name:'Pastelaria Canhão', body:`<p>A unique and unmissable specialty!</p><div class="highlight">The only Sericaia baked in a wood-fired oven. Takeaway only — call ahead recommended</div><a href="https://maps.app.goo.gl/PhMYZ9bLaDFK55ZD8" target="_blank">View location</a>` },
+            ],
+        },
+        restaurantes: {
+            pt: [
+                { icon:'🍷', name:'Adega Regional', body:`<p>Restaurante que serve cozinha tradicional alentejana sob tetos abobadados do século XVII.</p><div class="highlight">Comida tradicional em restaurante de qualidade</div><a href="https://maps.app.goo.gl/AAxRjzvj77g1YKQY9" target="_blank">Ver localização</a>` },
+                { icon:'🍴', name:'Recanto de São Paulo', body:`<p>Localizado junto ao Mercado Municipal Casa das Barcas, com base na rica culinária regional.</p><div class="highlight">Comida tradicional em restaurante de qualidade</div><a href="https://maps.app.goo.gl/p9DtnX2PUveSndgH6" target="_blank">Ver localização</a>` },
+                { icon:'🌅', name:'Alcalá Restaurant & Sky Lounge', body:`<p>Terraço moderno com vistas privilegiadas para o Aqueduto da Amoreira.</p><div class="highlight">Comida moderna em restaurante de qualidade</div><a href="https://maps.app.goo.gl/cjtpBZ38KE9sYZCs8" target="_blank">Ver localização</a>` },
+                { icon:'🍕', name:'Nonna Bia', body:`<p>Pratos especiais mensais inspirados nos ingredientes da época e nas famosas pizzarias napolitanas.</p><div class="highlight">Comida italiana em restaurante de qualidade</div><a href="https://maps.app.goo.gl/9Y2PNfJSx2SJSsok7" target="_blank">Ver localização</a>` },
+                { icon:'✨', name:'Acontece', body:`<p>Restaurante de autor com experiências únicas, esplanada atraente e decoração contemporânea.</p><div class="highlight">Comida sofisticada em restaurante de design</div><a href="https://maps.app.goo.gl/ZirRh4D5CvKBKJzS8" target="_blank">Ver localização</a>` },
+                { icon:'🦞', name:'El Cristo', body:`<div class="highlight">Considerada uma das melhores marisqueiras de Portugal</div><a href="https://maps.app.goo.gl/BG4AJFB3dG87wkAc8" target="_blank">Ver localização</a>` },
+                { icon:'🛣️', name:'Vinha da Amada', body:`<div class="highlight">Comida Tradicional em Restaurante de Estrada</div><a href="https://maps.app.goo.gl/oCrcCCVyam6X6ZXr9" target="_blank">Ver localização</a>` },
+            ],
+            es: [
+                { icon:'🍷', name:'Adega Regional', body:`<p>Restaurante de cocina tradicional alentejana bajo bóvedas del siglo XVII.</p><div class="highlight">Comida tradicional en restaurante de calidad</div><a href="https://maps.app.goo.gl/AAxRjzvj77g1YKQY9" target="_blank">Ver ubicación</a>` },
+                { icon:'🍴', name:'Recanto de São Paulo', body:`<p>Junto al Mercado Municipal Casa das Barcas, basado en la rica cocina regional.</p><div class="highlight">Comida tradicional en restaurante de calidad</div><a href="https://maps.app.goo.gl/p9DtnX2PUveSndgH6" target="_blank">Ver ubicación</a>` },
+                { icon:'🌅', name:'Alcalá Restaurant & Sky Lounge', body:`<p>Terraza moderna con vistas privilegiadas al Acueducto de Amoreira.</p><div class="highlight">Comida moderna en restaurante de calidad</div><a href="https://maps.app.goo.gl/cjtpBZ38KE9sYZCs8" target="_blank">Ver ubicación</a>` },
+                { icon:'🍕', name:'Nonna Bia', body:`<p>Platos especiales mensuales inspirados en ingredientes de temporada y las famosas pizzerías napolitanas.</p><div class="highlight">Comida italiana en restaurante de calidad</div><a href="https://maps.app.goo.gl/9Y2PNfJSx2SJSsok7" target="_blank">Ver ubicación</a>` },
+                { icon:'✨', name:'Acontece', body:`<p>Restaurante de autor con experiencias únicas, terraza acogedora y decoración contemporánea.</p><div class="highlight">Comida sofisticada en restaurante de diseño</div><a href="https://maps.app.goo.gl/ZirRh4D5CvKBKJzS8" target="_blank">Ver ubicación</a>` },
+                { icon:'🦞', name:'El Cristo', body:`<div class="highlight">Considerada una de las mejores marisquerías de Portugal</div><a href="https://maps.app.goo.gl/BG4AJFB3dG87wkAc8" target="_blank">Ver ubicación</a>` },
+                { icon:'🛣️', name:'Vinha da Amada', body:`<div class="highlight">Comida Tradicional en Restaurante de Carretera</div><a href="https://maps.app.goo.gl/oCrcCCVyam6X6ZXr9" target="_blank">Ver ubicación</a>` },
+            ],
+            en: [
+                { icon:'🍷', name:'Adega Regional', body:`<p>Serves traditional Alentejo cuisine under 17th-century vaulted ceilings.</p><div class="highlight">Traditional food in a quality restaurant</div><a href="https://maps.app.goo.gl/AAxRjzvj77g1YKQY9" target="_blank">View location</a>` },
+                { icon:'🍴', name:'Recanto de São Paulo', body:`<p>Located next to the Casa das Barcas Municipal Market, rooted in rich regional cuisine.</p><div class="highlight">Traditional food in a quality restaurant</div><a href="https://maps.app.goo.gl/p9DtnX2PUveSndgH6" target="_blank">View location</a>` },
+                { icon:'🌅', name:'Alcalá Restaurant & Sky Lounge', body:`<p>Modern rooftop terrace with stunning views of the Amoreira Aqueduct.</p><div class="highlight">Contemporary food in a quality restaurant</div><a href="https://maps.app.goo.gl/cjtpBZ38KE9sYZCs8" target="_blank">View location</a>` },
+                { icon:'🍕', name:'Nonna Bia', body:`<p>Monthly specials inspired by seasonal ingredients and the famous Neapolitan pizzerias.</p><div class="highlight">Italian food in a quality restaurant</div><a href="https://maps.app.goo.gl/9Y2PNfJSx2SJSsok7" target="_blank">View location</a>` },
+                { icon:'✨', name:'Acontece', body:`<p>Signature restaurant with unique experiences, a charming terrace and contemporary décor.</p><div class="highlight">Sophisticated food in a design restaurant</div><a href="https://maps.app.goo.gl/ZirRh4D5CvKBKJzS8" target="_blank">View location</a>` },
+                { icon:'🦞', name:'El Cristo', body:`<div class="highlight">Regarded as one of the best seafood restaurants in Portugal</div><a href="https://maps.app.goo.gl/BG4AJFB3dG87wkAc8" target="_blank">View location</a>` },
+                { icon:'🛣️', name:'Vinha da Amada', body:`<div class="highlight">Traditional Food at a Roadside Restaurant</div><a href="https://maps.app.goo.gl/oCrcCCVyam6X6ZXr9" target="_blank">View location</a>` },
+            ],
+        },
+        arredores: {
+            pt: [
+                { icon:'🏘️', name:'Pata Larga - Juromenha', body:`<div class="highlight">Comida caseira com atendimento intimista em restaurante de aldeia</div><a href="https://maps.app.goo.gl/haaz7ZyQcu31Ew5TA" target="_blank">Ver localização</a>` },
+                { icon:'🦌', name:'Pompílio - São Vicente', body:`<div class="highlight">Comida tradicional e caça em restaurante de qualidade</div><a href="https://maps.app.goo.gl/KyPXyzrC2uzFQxiS6" target="_blank">Ver localização</a>` },
+                { icon:'🍳', name:'O Canto - Vila Boim', body:`<div class="highlight">Comida Tradicional em Restaurante Tradicional</div><a href="https://maps.app.goo.gl/ootVSLChSgTpC9TA7" target="_blank">Ver localização</a>` },
+                { icon:'🍲', name:'Taberna do Adro - Vila Fernando', body:`<div class="highlight">Comida Tradicional em Restaurante (Casa de Pasto) Típico</div><a href="https://maps.app.goo.gl/rpT2kUdJfz41usAx5" target="_blank">Ver localização</a>` },
+            ],
+            es: [
+                { icon:'🏘️', name:'Pata Larga - Juromenha', body:`<div class="highlight">Comida casera con trato íntimo en restaurante de aldea</div><a href="https://maps.app.goo.gl/haaz7ZyQcu31Ew5TA" target="_blank">Ver ubicación</a>` },
+                { icon:'🦌', name:'Pompílio - São Vicente', body:`<div class="highlight">Comida tradicional y caza en restaurante de calidad</div><a href="https://maps.app.goo.gl/KyPXyzrC2uzFQxiS6" target="_blank">Ver ubicación</a>` },
+                { icon:'🍳', name:'O Canto - Vila Boim', body:`<div class="highlight">Comida Tradicional en Restaurante Tradicional</div><a href="https://maps.app.goo.gl/ootVSLChSgTpC9TA7" target="_blank">Ver ubicación</a>` },
+                { icon:'🍲', name:'Taberna do Adro - Vila Fernando', body:`<div class="highlight">Comida Tradicional en Taberna Típica</div><a href="https://maps.app.goo.gl/rpT2kUdJfz41usAx5" target="_blank">Ver ubicación</a>` },
+            ],
+            en: [
+                { icon:'🏘️', name:'Pata Larga - Juromenha', body:`<div class="highlight">Home cooking with intimate service in a village restaurant</div><a href="https://maps.app.goo.gl/haaz7ZyQcu31Ew5TA" target="_blank">View location</a>` },
+                { icon:'🦌', name:'Pompílio - São Vicente', body:`<div class="highlight">Traditional cuisine and game in a quality restaurant</div><a href="https://maps.app.goo.gl/KyPXyzrC2uzFQxiS6" target="_blank">View location</a>` },
+                { icon:'🍳', name:'O Canto - Vila Boim', body:`<div class="highlight">Traditional Food in a Traditional Restaurant</div><a href="https://maps.app.goo.gl/ootVSLChSgTpC9TA7" target="_blank">View location</a>` },
+                { icon:'🍲', name:'Taberna do Adro - Vila Fernando', body:`<div class="highlight">Traditional Food at a Typical Tavern</div><a href="https://maps.app.goo.gl/rpT2kUdJfz41usAx5" target="_blank">View location</a>` },
+            ],
+        },
+        passeios: {
+            pt: [
+                { name:'Juromenha', dist:'📍 17,5 km de Elvas', desc:'Aldeia medieval com castelo e miradouro privilegiado para Espanha e o Rio Guadiana. Uma viagem ao passado medieval português.', url:'https://goo.gl/maps/qBAVeHE31rmzyApH8', link:'Ver localização →' },
+                { name:'Monsaraz', dist:'📍 69,7 km de Elvas', desc:'Aldeia medieval em perfeito estado de conservação, com miradouro espetacular para o espelho de água da Barragem do Alqueva.', url:'https://goo.gl/maps/MWw1fFQdjqAVAfJA8', link:'Ver localização →' },
+                { name:'Marvão', dist:'📍 77,3 km de Elvas', desc:'Vila abaluartada raiana com castelo, ruas estreitas e vistas absolutamente deslumbrantes sobre a serra e fronteira.', url:'https://goo.gl/maps/dFBbMRT32pqMB9po7', link:'Ver localização →' },
+            ],
+            es: [
+                { name:'Juromenha', dist:'📍 17,5 km de Elvas', desc:'Aldea medieval con castillo y mirador privilegiado hacia España y el Río Guadiana. Un viaje al pasado medieval portugués.', url:'https://goo.gl/maps/qBAVeHE31rmzyApH8', link:'Ver ubicación →' },
+                { name:'Monsaraz', dist:'📍 69,7 km de Elvas', desc:'Aldea medieval en perfecto estado de conservación, con mirador espectacular al embalse de Alqueva.', url:'https://goo.gl/maps/MWw1fFQdjqAVAfJA8', link:'Ver ubicación →' },
+                { name:'Marvão', dist:'📍 77,3 km de Elvas', desc:'Villa amurallada fronteriza con castillo, calles estrechas y vistas absolutamente impresionantes sobre la sierra y la frontera.', url:'https://goo.gl/maps/dFBbMRT32pqMB9po7', link:'Ver ubicación →' },
+            ],
+            en: [
+                { name:'Juromenha', dist:'📍 17.5 km from Elvas', desc:'Medieval village with a castle and a privileged viewpoint overlooking Spain and the Guadiana River. A journey into Portugal\'s medieval past.', url:'https://goo.gl/maps/qBAVeHE31rmzyApH8', link:'View location →' },
+                { name:'Monsaraz', dist:'📍 69.7 km from Elvas', desc:'Medieval village in perfect condition, with a spectacular viewpoint over the Alqueva reservoir.', url:'https://goo.gl/maps/MWw1fFQdjqAVAfJA8', link:'View location →' },
+                { name:'Marvão', dist:'📍 77.3 km from Elvas', desc:'Fortified border village with a castle, narrow streets and absolutely stunning views over the mountains and border.', url:'https://goo.gl/maps/dFBbMRT32pqMB9po7', link:'View location →' },
+            ],
+        },
+        estacionamento: {
+            pt: [
+                { name:'Praça da República', info:'Subterrâneo, 1ª hora gratuita', tags:['Não aconselhável a veículos grandes'], tagColors:[''], url:'https://goo.gl/maps/5Tix55jzNZXSFbWu5', link:'Ver no mapa →' },
+                { name:'Praça de Armas', info:'', tags:['Gratuito','Aconselhável a veículos grandes'], tagColors:['','var(--terracotta)'], url:'https://goo.gl/maps/BLvCWRRELofCV47E7', link:'Ver no mapa →' },
+                { name:'Estacionamento Shell', info:'', tags:['Gratuito'], tagColors:[''], url:'https://goo.gl/maps/LWLKETsK2MXDjQUn6', link:'Ver no mapa →' },
+                { name:'Parque Casa das Barcas', info:'Acesso através das muralhas a novo parque de grandes dimensões', tags:['Gratuito','Aconselhável a veículos grandes'], tagColors:['','var(--terracotta)'], url:'https://goo.gl/maps/1rEaiMaiYGzj9BFx9', link:'Ver no mapa →' },
+            ],
+            es: [
+                { name:'Praça da República', info:'Subterráneo, 1ª hora gratuita', tags:['No recomendado para vehículos grandes'], tagColors:[''], url:'https://goo.gl/maps/5Tix55jzNZXSFbWu5', link:'Ver en el mapa →' },
+                { name:'Praça de Armas', info:'', tags:['Gratuito','Recomendado para vehículos grandes'], tagColors:['','var(--terracotta)'], url:'https://goo.gl/maps/BLvCWRRELofCV47E7', link:'Ver en el mapa →' },
+                { name:'Aparcamiento Shell', info:'', tags:['Gratuito'], tagColors:[''], url:'https://goo.gl/maps/LWLKETsK2MXDjQUn6', link:'Ver en el mapa →' },
+                { name:'Parque Casa das Barcas', info:'Acceso a través de las murallas a un nuevo aparcamiento de gran tamaño', tags:['Gratuito','Recomendado para vehículos grandes'], tagColors:['','var(--terracotta)'], url:'https://goo.gl/maps/1rEaiMaiYGzj9BFx9', link:'Ver en el mapa →' },
+            ],
+            en: [
+                { name:'Praça da República', info:'Underground, 1st hour free', tags:['Not recommended for large vehicles'], tagColors:[''], url:'https://goo.gl/maps/5Tix55jzNZXSFbWu5', link:'View on map →' },
+                { name:'Praça de Armas', info:'', tags:['Free','Recommended for large vehicles'], tagColors:['','var(--terracotta)'], url:'https://goo.gl/maps/BLvCWRRELofCV47E7', link:'View on map →' },
+                { name:'Shell Parking', info:'', tags:['Free'], tagColors:[''], url:'https://goo.gl/maps/LWLKETsK2MXDjQUn6', link:'View on map →' },
+                { name:'Parque Casa das Barcas', info:'Access through the city walls to a large new car park', tags:['Free','Recommended for large vehicles'], tagColors:['','var(--terracotta)'], url:'https://goo.gl/maps/1rEaiMaiYGzj9BFx9', link:'View on map →' },
+            ],
+        },
+        locais: {
+            pt: [
+                { icon:'🏰', name:'Castelo de Elvas', body:`<p>Visita obrigatória ao Castelo e ruas circundantes. Aproveite para conhecer a Fábrica Museu da Ameixa de Elvas.</p><a href="https://goo.gl/maps/pGN14FSZkz9rZH1M6" target="_blank">Ver Castelo</a><br><a href="https://goo.gl/maps/sZMxK5sf9gRnubAn6" target="_blank">Ver Fábrica Museu da Ameixa</a>` },
+                { icon:'🏛️', name:'Muralhas e Fortificações', body:`<p>Sistema de fortificações abaluartadas único. Recomendamos visita noturna de carro pela circular da cidade.</p><div class="highlight">Durante o dia, percorra a zona de fossos desde o museu militar</div><a href="https://goo.gl/maps/aSNqL5NW8Jd6zjMg8" target="_blank">Ver localização</a>` },
+                { icon:'💧', name:'Aqueduto da Amoreira', body:`<div class="highlight">Maior aqueduto da Península Ibérica com 8,5 km de extensão, datado de 1498</div><a href="https://goo.gl/maps/qxJF5qeC4oUBUTBA6" target="_blank">Ver localização</a>` },
+                { icon:'⛪', name:'Capela N. Sra. da Conceição', body:`<p>Situada sob a cintura de muralhas com miradouro privilegiado sobre a cidade.</p><a href="https://goo.gl/maps/9W9xEPLKhTRFGHSH8" target="_blank">Ver localização</a>` },
+                { icon:'ℹ️', name:'Posto de Turismo', body:`<p>Situado na Praça da República, ideal para recolher informação sobre Elvas e a região.</p><a href="https://goo.gl/maps/1mmQAauJNFjGkJMW7" target="_blank">Ver localização</a>` },
+            ],
+            es: [
+                { icon:'🏰', name:'Castillo de Elvas', body:`<p>Visita obligada al Castillo y calles circundantes. Aproveche para conocer la Fábrica Museo de la Ciruela de Elvas.</p><a href="https://goo.gl/maps/pGN14FSZkz9rZH1M6" target="_blank">Ver Castillo</a><br><a href="https://goo.gl/maps/sZMxK5sf9gRnubAn6" target="_blank">Ver Fábrica Museo de la Ciruela</a>` },
+                { icon:'🏛️', name:'Murallas y Fortificaciones', body:`<p>Sistema único de fortificaciones abaluartadas. Recomendamos visita nocturna en coche por la ronda de la ciudad.</p><div class="highlight">Durante el día, recorra la zona de fosos desde el museo militar</div><a href="https://goo.gl/maps/aSNqL5NW8Jd6zjMg8" target="_blank">Ver ubicación</a>` },
+                { icon:'💧', name:'Acueducto de Amoreira', body:`<div class="highlight">Mayor acueducto de la Península Ibérica con 8,5 km de longitud, datado de 1498</div><a href="https://goo.gl/maps/qxJF5qeC4oUBUTBA6" target="_blank">Ver ubicación</a>` },
+                { icon:'⛪', name:'Capilla N. Sra. de la Concepción', body:`<p>Situada bajo la muralla con mirador privilegiado sobre la ciudad.</p><a href="https://goo.gl/maps/9W9xEPLKhTRFGHSH8" target="_blank">Ver ubicación</a>` },
+                { icon:'ℹ️', name:'Oficina de Turismo', body:`<p>Situada en la Praça da República, ideal para obtener información sobre Elvas y la región.</p><a href="https://goo.gl/maps/1mmQAauJNFjGkJMW7" target="_blank">Ver ubicación</a>` },
+            ],
+            en: [
+                { icon:'🏰', name:'Elvas Castle', body:`<p>A must-visit: the Castle and its surrounding streets. Don't miss the Elvas Plum Factory Museum.</p><a href="https://goo.gl/maps/pGN14FSZkz9rZH1M6" target="_blank">View Castle</a><br><a href="https://goo.gl/maps/sZMxK5sf9gRnubAn6" target="_blank">View Plum Factory Museum</a>` },
+                { icon:'🏛️', name:'Walls & Fortifications', body:`<p>A unique bastion fortification system. We recommend a night drive around the city ring road.</p><div class="highlight">During the day, explore the moat area starting from the military museum</div><a href="https://goo.gl/maps/aSNqL5NW8Jd6zjMg8" target="_blank">View location</a>` },
+                { icon:'💧', name:'Amoreira Aqueduct', body:`<div class="highlight">The largest aqueduct on the Iberian Peninsula, stretching 8.5 km, dating from 1498</div><a href="https://goo.gl/maps/qxJF5qeC4oUBUTBA6" target="_blank">View location</a>` },
+                { icon:'⛪', name:'Chapel of N. Sra. da Conceição', body:`<p>Located below the city walls with a privileged viewpoint over the city.</p><a href="https://goo.gl/maps/9W9xEPLKhTRFGHSH8" target="_blank">View location</a>` },
+                { icon:'ℹ️', name:'Tourism Office', body:`<p>Located in Praça da República, perfect for collecting information about Elvas and the region.</p><a href="https://goo.gl/maps/1mmQAauJNFjGkJMW7" target="_blank">View location</a>` },
+            ],
+        },
+        verao_elvas: {
+            pt: [
+                { name:'🏊 Piscinas Municipais de Elvas', dist:'Públicas – Descobertas e cobertas mediante a época do ano', url:'https://goo.gl/maps/SQJMWpSPTKCFykL2A', link:'Ver localização →' },
+                { name:'🏊 Piscina José Vicente Abreu', dist:'Clube Elvense de Natação – Descobertas mediante a época do ano', url:'https://goo.gl/maps/xbz2eMpbwhA5wTP47', link:'Ver localização →' },
+                { name:'🏊 Piscinas Elxadai', dist:'Unidade Hoteleira – Descobertas mediante a época do ano', url:'https://goo.gl/maps/TCJM3XP3RshGmFy29', link:'Ver localização →' },
+            ],
+            es: [
+                { name:'🏊 Piscinas Municipales de Elvas', dist:'Públicas – Descubiertas y cubiertas según la temporada', url:'https://goo.gl/maps/SQJMWpSPTKCFykL2A', link:'Ver ubicación →' },
+                { name:'🏊 Piscina José Vicente Abreu', dist:'Club Elvense de Natación – Descubiertas según la temporada', url:'https://goo.gl/maps/xbz2eMpbwhA5wTP47', link:'Ver ubicación →' },
+                { name:'🏊 Piscinas Elxadai', dist:'Unidad Hotelera – Descubiertas según la temporada', url:'https://goo.gl/maps/TCJM3XP3RshGmFy29', link:'Ver ubicación →' },
+            ],
+            en: [
+                { name:'🏊 Elvas Municipal Swimming Pools', dist:'Public – Outdoor and indoor depending on the season', url:'https://goo.gl/maps/SQJMWpSPTKCFykL2A', link:'View location →' },
+                { name:'🏊 José Vicente Abreu Pool', dist:'Elvense Swimming Club – Outdoor depending on the season', url:'https://goo.gl/maps/xbz2eMpbwhA5wTP47', link:'View location →' },
+                { name:'🏊 Elxadai Pools', dist:'Hotel Unit – Outdoor depending on the season', url:'https://goo.gl/maps/TCJM3XP3RshGmFy29', link:'View location →' },
+            ],
+        },
+        verao_regiao: {
+            pt: [
+                { name:"🏖️ Praia Fluvial de Azenhas d'El Rei", dist:'📍 52,7 km de Avenida · Alandroal', url:'https://goo.gl/maps/BNfq9G3JqFdMZZUZ6', link:'Ver localização →' },
+                { name:'🌊 Piscinas Naturales de La Codosera', dist:'📍 55,3 km de Avenida · Espanha', url:'https://goo.gl/maps/1ge4KtgAjAZPuCDWA', link:'Ver localização →' },
+                { name:'🏖️ Praia Fluvial de Monsaraz', dist:'📍 71,2 km de Avenida', url:'https://goo.gl/maps/uH5XVZ2C2QZ6MREs9', link:'Ver localização →' },
+                { name:'🎢 Parque Aquático AquaBadajoz', dist:'📍 14,7 km de Avenida · Badajoz, Espanha', url:'https://g.page/AQUABadajoz?share', link:'Ver localização →' },
+                { name:'🏖️ Piscina Fluvial de Portagem', dist:'📍 72,4 km de Avenida', url:'https://maps.app.goo.gl/ezN9qhPDGBj7b4yj8', link:'Ver localização →' },
+            ],
+            es: [
+                { name:"🏖️ Playa Fluvial de Azenhas d'El Rei", dist:'📍 52,7 km de Avenida · Alandroal', url:'https://goo.gl/maps/BNfq9G3JqFdMZZUZ6', link:'Ver ubicación →' },
+                { name:'🌊 Piscinas Naturales de La Codosera', dist:'📍 55,3 km de Avenida · España', url:'https://goo.gl/maps/1ge4KtgAjAZPuCDWA', link:'Ver ubicación →' },
+                { name:'🏖️ Playa Fluvial de Monsaraz', dist:'📍 71,2 km de Avenida', url:'https://goo.gl/maps/uH5XVZ2C2QZ6MREs9', link:'Ver ubicación →' },
+                { name:'🎢 Parque Acuático AquaBadajoz', dist:'📍 14,7 km de Avenida · Badajoz, España', url:'https://g.page/AQUABadajoz?share', link:'Ver ubicación →' },
+                { name:'🏖️ Piscina Fluvial de Portagem', dist:'📍 72,4 km de Avenida', url:'https://maps.app.goo.gl/ezN9qhPDGBj7b4yj8', link:'Ver ubicación →' },
+            ],
+            en: [
+                { name:"🏖️ Azenhas d'El Rei River Beach", dist:'📍 52.7 km from Avenida · Alandroal', url:'https://goo.gl/maps/BNfq9G3JqFdMZZUZ6', link:'View location →' },
+                { name:'🌊 La Codosera Natural Pools', dist:'📍 55.3 km from Avenida · Spain', url:'https://goo.gl/maps/1ge4KtgAjAZPuCDWA', link:'View location →' },
+                { name:'🏖️ Monsaraz River Beach', dist:'📍 71.2 km from Avenida', url:'https://goo.gl/maps/uH5XVZ2C2QZ6MREs9', link:'View location →' },
+                { name:'🎢 AquaBadajoz Water Park', dist:'📍 14.7 km from Avenida · Badajoz, Spain', url:'https://g.page/AQUABadajoz?share', link:'View location →' },
+                { name:'🏖️ Portagem River Pool', dist:'📍 72.4 km from Avenida', url:'https://maps.app.goo.gl/ezN9qhPDGBj7b4yj8', link:'View location →' },
+            ],
+        },
+    };
+
+    // ══════════════════════════════════════════════
+    // STATIC TRANSLATIONS (nav, headings, intros)
+    // ══════════════════════════════════════════════
+    const strings = {
+        pt: {
+            'nav-pastelarias':'🥐 Pastelarias','nav-restaurantes':'🍴 Restaurantes','nav-arredores':'🏘️ Arredores',
+            'nav-passeios':'🗺️ Passeios','nav-estacionamento':'🅿️ Estacionamento','nav-locais':'🏰 Locais de Interesse','nav-verao':'☀️ Verão',
+            'hero-subtitle':'Alojamento Local em Elvas',
+            'intro-text':'O <strong>Avenida</strong> é o seu lar em Elvas, a cidade-forte mais representativa da escola de fortificação abaluartada europeia. Estrategicamente localizado na Avenida da Piedade, oferecemos-lhe acesso privilegiado ao <strong>Património Mundial da UNESCO</strong>, ao maior aqueduto da Península Ibérica, e à autêntica gastronomia alentejana. Descubra Elvas com o conforto de se sentir em casa.',
+            'sec-pastelarias-title':'Pastelarias & Doçaria','sec-restaurantes-title':'Restaurantes','sec-arredores-title':'Arredores de Elvas',
+            'sec-passeios-title':'Sugestões de Passeios','sec-estacionamento-title':'Estacionamento','sec-locais-title':'Locais de Interesse',
+            'sec-verao-title':'☀️ Se o Tempo Permitir...','sec-verao-intro':'Nos dias quentes do verão, aproveite para refrescar-se nas piscinas e praias fluviais da região.',
+            'sec-verao-em-elvas':'Em Elvas','sec-verao-na-regiao':'Na Região',
+            'footer-desc':'Descubra Elvas • Património Mundial da UNESCO • Alentejo • Portugal',
+        },
+        es: {
+            'nav-pastelarias':'🥐 Pastelerías','nav-restaurantes':'🍴 Restaurantes','nav-arredores':'🏘️ Alrededores',
+            'nav-passeios':'🗺️ Excursiones','nav-estacionamento':'🅿️ Aparcamiento','nav-locais':'🏰 Lugares de Interés','nav-verao':'☀️ Verano',
+            'hero-subtitle':'Alojamiento Local en Elvas',
+            'intro-text':'<strong>Avenida</strong> es su hogar en Elvas, la ciudad-fortaleza más representativa de la escuela de fortificación abaluartada europea. Estratégicamente situado en la Avenida da Piedade, le ofrecemos acceso privilegiado al <strong>Patrimonio Mundial de la UNESCO</strong>, al mayor acueducto de la Península Ibérica y a la auténtica gastronomía alentejana. Descubra Elvas con la comodidad de sentirse en casa.',
+            'sec-pastelarias-title':'Pastelerías & Dulces','sec-restaurantes-title':'Restaurantes','sec-arredores-title':'Alrededores de Elvas',
+            'sec-passeios-title':'Sugerencias de Excursiones','sec-estacionamento-title':'Aparcamiento','sec-locais-title':'Lugares de Interés',
+            'sec-verao-title':'☀️ Si el Tiempo lo Permite...','sec-verao-intro':'En los días calurosos del verano, aproveche para refrescarse en las piscinas y playas fluviales de la región.',
+            'sec-verao-em-elvas':'En Elvas','sec-verao-na-regiao':'En la Región',
+            'footer-desc':'Descubra Elvas • Patrimonio Mundial de la UNESCO • Alentejo • Portugal',
+        },
+        en: {
+            'nav-pastelarias':'🥐 Bakeries','nav-restaurantes':'🍴 Restaurants','nav-arredores':'🏘️ Surroundings',
+            'nav-passeios':'🗺️ Day Trips','nav-estacionamento':'🅿️ Parking','nav-locais':'🏰 Points of Interest','nav-verao':'☀️ Summer',
+            'hero-subtitle':'Local Accommodation in Elvas',
+            'intro-text':'<strong>Avenida</strong> is your home in Elvas, the fortress city most representative of the European bastion fortification school. Strategically located on Avenida da Piedade, we offer you privileged access to the <strong>UNESCO World Heritage</strong> site, the largest aqueduct on the Iberian Peninsula, and authentic Alentejo cuisine. Discover Elvas with the comfort of feeling at home.',
+            'sec-pastelarias-title':'Bakeries & Pastries','sec-restaurantes-title':'Restaurants','sec-arredores-title':'Around Elvas',
+            'sec-passeios-title':'Day Trip Suggestions','sec-estacionamento-title':'Parking','sec-locais-title':'Points of Interest',
+            'sec-verao-title':'☀️ If the Weather Allows...','sec-verao-intro':'On hot summer days, cool off at the swimming pools and river beaches in the region.',
+            'sec-verao-em-elvas':'In Elvas','sec-verao-na-regiao':'In the Region',
+            'footer-desc':'Discover Elvas • UNESCO World Heritage • Alentejo • Portugal',
+        },
+    };
+
+    // ══════════════════════════════════════════════
+    // RENDER HELPERS
+    // ══════════════════════════════════════════════
+    function renderCards(gridId, items) {
+        const el = document.getElementById(gridId);
+        if (!el) return;
+        el.innerHTML = items.map(item => `
+            <div class="card stagger-animation">
+                <div class="card-header">
+                    <span class="icon">${item.icon}</span>
+                    <h3>${item.name}</h3>
+                </div>
+                <div class="card-body">
+                    <div class="establishment">${item.body}</div>
+                </div>
+            </div>`).join('');
+    }
+
+    function renderExcursions(gridId, items) {
+        const el = document.getElementById(gridId);
+        if (!el) return;
+        el.innerHTML = items.map(item => `
+            <div class="excursion-card stagger-animation">
+                <h3>${item.name}</h3>
+                <p class="distance">${item.dist}</p>
+                ${item.desc ? `<p>${item.desc}</p>` : ''}
+                <a href="${item.url}" target="_blank" style="color: var(--gold);">${item.link}</a>
+            </div>`).join('');
+    }
+
+    function renderParking(gridId, items) {
+        const el = document.getElementById(gridId);
+        if (!el) return;
+        el.innerHTML = items.map(item => {
+            const tagsHtml = item.tags.map((t, i) => `<span class="tag"${item.tagColors[i] ? ` style="background:${item.tagColors[i]}"` : ''}>${t}</span>`).join(' ');
+            return `<div class="parking-item">
+                <h4>${item.name}</h4>
+                ${item.info ? `<p>${item.info}</p>` : ''}
+                ${tagsHtml}
+                <br><a href="${item.url}" target="_blank">${item.link}</a>
+            </div>`;
+        }).join('');
+    }
+
+    // ══════════════════════════════════════════════
+    // MAIN setLang FUNCTION
+    // ══════════════════════════════════════════════
+    function setLang(lang) {
+        document.documentElement.lang = lang;
+
+        // Update buttons
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.textContent === lang.toUpperCase());
         });
+
+        // Translate static strings
+        const t = strings[lang];
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (t[key] !== undefined) el.innerHTML = t[key];
+        });
+
+        // Render dynamic card sections
+        renderCards('grid-pastelarias', cardData.pastelarias[lang]);
+        renderCards('grid-restaurantes', cardData.restaurantes[lang]);
+        renderCards('grid-arredores', cardData.arredores[lang]);
+        renderExcursions('grid-passeios', cardData.passeios[lang]);
+        renderParking('grid-estacionamento', cardData.estacionamento[lang]);
+        renderCards('grid-locais', cardData.locais[lang]);
+        renderExcursions('grid-verao-elvas', cardData.verao_elvas[lang]);
+        renderExcursions('grid-verao-regiao', cardData.verao_regiao[lang]);
+    }
+
+    // ── Smooth scroll with offset for fixed nav ──
+    const nav = document.getElementById('topNav');
+    document.querySelectorAll('.top-nav a[href^="#"]').forEach(link => {
+        link.addEventListener('click', e => {
+            e.preventDefault();
+            const target = document.querySelector(link.getAttribute('href'));
+            if (target) {
+                const offset = nav.offsetHeight + 16;
+                const top = target.getBoundingClientRect().top + window.scrollY - offset;
+                window.scrollTo({ top, behavior: 'smooth' });
+            }
+        });
+    });
+
+    // Init with Portuguese
+    setLang('pt');
+
+    // Position lang selector flush below nav
+    function positionLangSelector() {
+        const navH = document.getElementById('topNav').offsetHeight;
+        document.querySelector('.lang-selector').style.top = navH + 'px';
+    }
+    positionLangSelector();
+    window.addEventListener('resize', positionLangSelector);
     </script>
 </body>
 </html>
