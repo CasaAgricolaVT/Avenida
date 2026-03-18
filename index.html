@@ -577,6 +577,14 @@
             margin-right: 0.5rem;
             border-right: 1px solid rgba(255,255,255,0.15);
             flex-shrink: 0;
+            text-decoration: none !important;
+            border-bottom: 2px solid transparent !important;
+        }
+
+        .top-nav-brand:hover {
+            color: var(--gold) !important;
+            opacity: 0.85;
+            border-bottom-color: transparent !important;
         }
 
         .top-nav a {
@@ -597,7 +605,7 @@
         }
 
         @media (max-width: 768px) {
-            .top-nav-brand { display: none; }
+            .top-nav-brand { display: block; font-size: 0.95rem; padding: 0.85rem 0.6rem 0.85rem 0; }
             .top-nav a { font-size: 0.9rem; padding: 0.85rem 0.6rem; }
         }
 
@@ -677,10 +685,9 @@
 
     <nav class="top-nav" id="topNav">
         <div class="top-nav-inner">
-            <span class="top-nav-brand">AVENIDA</span>
+            <a href="#" class="top-nav-brand" style="text-decoration:none;">AVENIDA</a>
             <a href="#sec-pastelarias" data-i18n="nav-pastelarias">🥐 Pastelarias</a>
             <a href="#sec-restaurantes" data-i18n="nav-restaurantes">🍴 Restaurantes</a>
-            <a href="#sec-arredores" data-i18n="nav-arredores">🏘️ Arredores</a>
             <a href="#sec-passeios" data-i18n="nav-passeios">🗺️ Passeios</a>
             <a href="#sec-estacionamento" data-i18n="nav-estacionamento">🅿️ Estacionamento</a>
             <a href="#sec-locais" data-i18n="nav-locais">🏰 Locais de Interesse</a>
@@ -1064,7 +1071,12 @@
     document.querySelectorAll('.top-nav a[href^="#"]').forEach(link => {
         link.addEventListener('click', e => {
             e.preventDefault();
-            const target = document.querySelector(link.getAttribute('href'));
+            const href = link.getAttribute('href');
+            if (href === '#') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                return;
+            }
+            const target = document.querySelector(href);
             if (target) {
                 const offset = nav.offsetHeight + 16;
                 const top = target.getBoundingClientRect().top + window.scrollY - offset;
