@@ -887,7 +887,7 @@
 
     <div class="hero">
         <div class="hero-content">
-            <img src="ValadasTrinidad Icone_PNG.png" alt="Avenida Logo" class="hero-logo">
+            <img src="ValadasTrinidad Icone_PNG.png" alt="Avenida Logo" class="hero-logo" fetchpriority="high">
             <h1>AVENIDA</h1>
             <p class="tagline">Just Like Home</p>
             <div class="divider"></div>
@@ -1387,8 +1387,10 @@
 
     // Position lang selector flush below nav
     function positionLangSelector() {
-        const navH = document.getElementById('topNav').offsetHeight;
-        document.querySelector('.lang-selector').style.top = navH + 'px';
+        requestAnimationFrame(() => {
+            const navH = document.getElementById('topNav').offsetHeight;
+            document.querySelector('.lang-selector').style.top = navH + 'px';
+        });
     }
     positionLangSelector();
     window.addEventListener('resize', positionLangSelector);
