@@ -75,7 +75,6 @@
             width: 120px;
             height: 120px;
             margin-bottom: 2rem;
-            animation: fadeInUp 1.2s ease-out;
             filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.3));
         }
 
@@ -1375,9 +1374,11 @@
             }
             const target = document.querySelector(href);
             if (target) {
-                const offset = nav.offsetHeight + 16;
-                const top = target.getBoundingClientRect().top + window.scrollY - offset;
-                window.scrollTo({ top, behavior: 'smooth' });
+                requestAnimationFrame(() => {
+                    const offset = nav.offsetHeight + 16;
+                    const top = target.getBoundingClientRect().top + window.scrollY - offset;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                });
             }
         });
     });
